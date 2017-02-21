@@ -18,13 +18,17 @@ class DoubleList:
         new_node = Node(data, old_node.prev, old_node)
         new_node.prev.next = new_node
         new_node.next.prev = new_node
-        
+        self.size += 1
+        return new_node
 
     def insert_after(self, old_node, data):
         new_node = Node(data, old_node, old_node.next)
         new_node.prev.next = new_node
         new_node.next.prev = new_node
+        self.size += 1
+        return new_node
 
     def remove(self, node):
         node.prev.next = node.next
         node.next.prev = node.prev
+        self.size -= 1
