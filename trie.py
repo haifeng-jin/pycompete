@@ -1,34 +1,33 @@
 class TrieNode:
     def __init__(self):
         self.isEnd=False
-        self.children=['*']*26 #we can judge wheather there is a children node
-        self.word='' # every node store string from root to this node
+        self.children=[None]*26 #we can judge wheather there is a children node
 
 class Trie:
-    def __init__(self):
+    def __init__(self, alpha='A'):
         self.root=TrieNode()
+        self.alpha = alpha
 
     def insert(self,word):
         cur=self.root
-        for i in range(0,len(word)):
-            if cur.children[ord(word[i])-97]=='*':
-                cur.children[ord(word[i])-97]=TrieNode()
-                cur.children[ord(word[i])-97].word=cur.word+word[i]
-            cur=cur.children[ord(word[i])-97]
+        for i in range(len(word)):
+            if not cur.children[ord(word[i])-ord(self.alpha)]:
+                cur.children[ord(word[i])-ord(self.alpha)]=TrieNode()
+            cur=cur.children[ord(word[i])-ord(self.alpha)]
         cur.isEnd=True
 
     def search(self,word):
         cur=self.root
-        for i in range(0,len(word)):
-            if cur.children[ord(word[i])-97]=='*':
+        for i in range(len(word)):
+            if not cur.children[ord(word[i])-ord(self.alpha)]:
                 return False
-            cur=cur.children[ord(word[i])-97]
+            cur=cur.children[ord(word[i])-ord(self.alpha)]
         return cur.isEnd
 
     def startsWith(self,prefix):
         cur = self.root
-        for i in range(0, len(prefix)):
-            if cur.children[ord(prefix[i]) - 97] == '*':
+        for i in range(len(prefix)):
+            if not cur.children[ord(prefix[i]) - ord(self.alpha)]:
                 return False
-            cur = cur.children[ord(prefix[i]) - 97]
+            cur = cur.children[ord(prefix[i]) - ord(self.alpha)]
         return True
