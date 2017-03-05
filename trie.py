@@ -1,33 +1,31 @@
-class TrieNode:
+class TrieNode(object):
+    # Initialize your data structure here.
     def __init__(self):
-        self.isEnd=False
-        self.children=[None]*26 #we can judge wheather there is a children node
+        self.is_end = False
+        self.leaves = {}
 
-class Trie:
-    def __init__(self, alpha='A'):
-        self.root=TrieNode()
-        self.alpha = alpha
+    # Inserts a word into the trie.
+    def insert(self, word):
+        cur = self
+        for c in word:
+            if not c in cur.leaves:
+                cur.leaves[c] = TrieNode()
+            cur = cur.leaves[c]
+        cur.is_end = True
 
-    def insert(self,word):
-        cur=self.root
-        for i in range(len(word)):
-            if not cur.children[ord(word[i])-ord(self.alpha)]:
-                cur.children[ord(word[i])-ord(self.alpha)]=TrieNode()
-            cur=cur.children[ord(word[i])-ord(self.alpha)]
-        cur.isEnd=True
 
     def search(self,word):
-        cur=self.root
-        for i in range(len(word)):
-            if not cur.children[ord(word[i])-ord(self.alpha)]:
+        cur = self
+        for c in word:
+            if not c in cur.leaves:
                 return False
-            cur=cur.children[ord(word[i])-ord(self.alpha)]
-        return cur.isEnd
+            cur = cur.leaves[c]
+        return cur.is_end
 
     def startsWith(self,prefix):
-        cur = self.root
-        for i in range(len(prefix)):
-            if not cur.children[ord(prefix[i]) - ord(self.alpha)]:
+        cur = self
+        for c in word:
+            if not c in cur.leaves:
                 return False
-            cur = cur.children[ord(prefix[i]) - ord(self.alpha)]
+            cur = cur.leaves[c]
         return True
