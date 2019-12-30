@@ -18,17 +18,19 @@ a = {}
 a['ab'] = 5
 print('ab' in a)  # True
 print(a['ab'])  # 5
+a.pop('ab')
+print('ab' in a)  # False
 
 a = set()
 a.add('ab')
-print('ab' in a) # True
+print('ab' in a)  # True
 ```
 ## Heap
 # Strings
 ## split strings
 ```python
 a = 'aba'
-print(a.split('a'))   # ['', 'b', '']
+print(a.split('a'))  # ['', 'b', '']
 ```
 ## count occurance
 ```python
