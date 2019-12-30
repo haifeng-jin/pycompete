@@ -5,11 +5,11 @@ import collections
 dq = collections.deque()
 dq.append(1)
 dq.append(2)
-dq.append_left(3)
+dq.appendleft(3)
 print(dq)  # [3, 1, 2]
 dq.pop()
 print(dq)  # [3, 1]
-dq.pop_left()
+dq.popleft()
 print(dq)  # [1]
 ```
 ## Hash Table
