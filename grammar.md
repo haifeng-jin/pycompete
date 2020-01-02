@@ -27,13 +27,20 @@ print('ab' in a)  # True
 ```
 ## Heap
 # Strings
-## split strings
+## Split Strings
 ```python
 a = 'aba'
 print(a.split('a'))  # ['', 'b', '']
+print(a.split('x'))  # ['aba']
 ```
-## count occurance
+## Count Occurance
 ```python
 a = 'abababa'
 print(a.count('aba'))  # 2
+```
+## Case Changes
+```python
+a = 'aBA'
+print(a.upper())  # ABA
+print(a.lower())  # aba 
 ```
