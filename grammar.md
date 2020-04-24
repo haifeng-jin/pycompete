@@ -28,6 +28,23 @@ a.remove('ab')
 print('ab' in a)  # False
 ```
 ## Heap
+```python
+```
+# Iterator
+## Group By
+```python
+[k for k, g in groupby('AAAABBBCCDAABBB')]  # --> A B C D A B
+[list(g) for k, g in groupby('AAAABBBCCD')]  # --> AAAA BBB CC D
+```
+## Combination
+```python
+combinations('ABCD', 2)  # AB AC AD BC BD CD
+combinations_with_replacement('ABCD', 2)  # AA AB AC AD BB BC BD CC CD DD
+```
+## Permutation
+```python
+permutations('ABCD', 2)  # AB AC AD BA BC BD CA CB CD DA DB DC
+```
 # Strings
 ## Split Strings
 ```python
