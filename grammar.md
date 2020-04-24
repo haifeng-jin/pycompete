@@ -24,6 +24,8 @@ print('ab' in a)  # False
 a = set()
 a.add('ab')
 print('ab' in a)  # True
+a.remove('ab')
+print('ab' in a)  # False
 ```
 ## Heap
 # Strings
