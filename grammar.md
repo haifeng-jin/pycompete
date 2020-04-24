@@ -29,6 +29,32 @@ print('ab' in a)  # False
 ```
 ## Heap
 ```python
+import heapq
+hp = heapq.heapify([1, 5, 8, 2, 3])
+heapq.heappush(hp, 9)
+print(heapq.heappop(hp))  # 1
+# Use negative value if want a max heap.
+# or use cmp_to_key(cmp).
+```
+## Comparison
+```python
+# Traditional cpp style cmp function.
+def cmp(a, b):
+    return a - b
+
+from functools import cmp_to_key
+
+list_b = sorted(list_a, key=cmp_to_key(cmp))
+
+# For anything not supporting key argument
+# wrap them into a class with cmp as comparison function
+k_class = cmp_to_key(cmp)
+list_b = []
+for a in list_a:
+  list_b.append(k_class(a))
+list_b = sorted(list_b)
+for b in list_b:
+  print(b.obj)
 ```
 # Iterator
 ## Group By
